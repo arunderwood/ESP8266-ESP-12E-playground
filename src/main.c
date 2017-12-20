@@ -30,12 +30,19 @@
 
 #include "simba.h"
 
+
 int main()
 {
     struct pin_driver_t led;
+    struct uart_driver_t uart;
 
     /* Start the system. */
     sys_start();
+
+    uart_module_init();
+    uart_init(&uart, &uart_device[0], 921600, NULL, 0);
+    uart_start(&uart);
+    sys_set_stdout(&uart.chout);
 
     /* Initialize the LED pin as output and set its value to 1. */
     pin_init(&led, &pin_led_dev, PIN_OUTPUT);
@@ -47,6 +54,7 @@ int main()
 
         /* Toggle the LED on/off. */
         pin_toggle(&led);
+        std_printf(FSTR("Hello world!\n"));
     }
 
     return (0);

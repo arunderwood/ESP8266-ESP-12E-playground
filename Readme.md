@@ -12,7 +12,7 @@ In more helpful terms:
 
 ## Flashing MicroPython
 
-The tutorials on the MicroPython site list a flashing command similar to the one below.  However, they did not work for me.  A helpful Amazon reviewer pointed out setting `--flash_mode dio`
+The tutorials on the MicroPython site list a flashing command similar to the one below.  However, they did not work for me.  A helpful Amazon reviewer pointed out setting `--flash_mode dio` is required in order to correctly flash this particular board.
 
 ```
 esptool.py --port /dev/ttyUSB0 --baud 115200 write_flash --flash_size=detect --flash_mode dio 0 esp8266-20171101-v1.9.3.bin

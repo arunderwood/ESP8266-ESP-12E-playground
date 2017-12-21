@@ -1,3 +1,38 @@
+#HiLetgo ESP8266
+
+In traditional "cheap electronics" fashion, this unit is verbosely marketed on [Amazon](https://www.amazon.com/gp/product/B010N1SPRK) as __HiLetgo 2pcs ESP8266 NodeMCU LUA CP2102 ESP-12E Internet WIFI Development Board Open source Serial Wireless Module Works Great with Arduino IDE/Micropython__.
+
+In more helpful terms:
+
+* ESP-12E is the SMT module on the board, which consists of an ESP8266 MCU
+* CP2102 is the USB to UART chip on the board
+* NodeMCU is the firmware that comes on the board, which contains and embedded LUA interpreter
+
+# MicroPython
+
+## Flashing MicroPython
+
+The tutorials on the MicroPython site list a flashing command similar to the one below.  However, they did not work for me.  A helpful Amazon reviewer pointed out setting `--flash_mode dio`
+
+```
+esptool.py --port /dev/ttyUSB0 --baud 115200 write_flash --flash_size=detect --flash_mode dio 0 esp8266-20171101-v1.9.3.bin
+```
+
+After that, open the serial REPL
+
+```
+screen /dev/ttyUSB0 115200
+```
+
+```
+import network
+sta_if = network.WLAN(network.STA_IF); sta_if.active(True)
+sta_if.connect("<AP_name>", "<password>") # Connect to an AP
+sta_if.isconnected()                      # Check for successful connection
+```
+
+# Simba
+
 ## Simba Pins
 
 These macro definitions link to the following physical pins.

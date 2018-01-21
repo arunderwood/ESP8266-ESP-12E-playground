@@ -24,6 +24,13 @@ After that, open the serial REPL
 screen /dev/ttyUSB0 115200
 ```
 
+Or access the REPL through rshell
+
+```
+pip3 install rshell
+rshell -p /dev/ttyUSB0 -b 115200 repl
+```
+
 ### Micropython REPL Keyboard Shortcuts
 
 * Ctrl-A on a blank line will enter raw REPL mode. This is like a permanent paste mode, except that characters are not echoed back.
